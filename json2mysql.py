@@ -25,7 +25,7 @@ def load_schema(filename):
         schema = json.load(f)
     return schema
 
-\
+
 def build_create_table(table):
     return 'CREATE TABLE {exists} {tbl_name} ({defs}) {table_opts};'.format(
         exists=('IF NOT EXISTS' if not table.get('exists') else ''),
@@ -53,7 +53,7 @@ def create_definition(col):
     elif col.get('unique'):
         definition += ' UNIQUE'
     elif col.get('foreign key'):
-        definition += ' FOREIGN KEY'
+        definition += ' FOREIGN KEY ({})'.format(', '.join(col['foreign key']))
         definition += reference_definition(col)
     return definition
 
