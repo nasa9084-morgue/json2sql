@@ -39,7 +39,22 @@ def create_definitions(table):
     defs = []
     for col in table['columns']:
         defs.append(create_definition(col))
-    return ', '.join(defs)
+    definition = ', '.join(defs)
+    for keyname in ['primary key', 'index', 'key', 'unique']:
+        if table.get(key):
+            key = table[keyname]
+            definition += ' ' + keyname.upper()
+            definition += index_type(key)
+            definition += '(' + ', '.join(key['columns']) + ')'
+    if table.get('foreign key'):
+        fk = table['foreign key']
+        definition += ' FOREIGN KEY'
+        if fk.get('columns'):
+            definition += '(' + ', '.join(fk['columns']) + ')'
+        if fk.get('key'):
+            definition += '(' + fk['key'] +')'
+        definition += reference_definition(fk)
+    return definition
 
 
 def create_definition(col):
@@ -49,7 +64,6 @@ def create_definition(col):
     )
     if col.get('primary key'):
         definition += ' PRIMARY KEY'
-        definition += index_type(col)
     elif col.get('unique'):
         definition += ' UNIQUE'
     elif col.get('foreign key'):
@@ -159,9 +173,9 @@ def get_collate(col):
     return ''
 
 
-def index_type(col):
-    if col.get('using'):
-        return ' USING {}'.format(col['using'])
+def index_type(key):
+    if key.get('using'):
+        return ' USING {}'.format(key['using'])
     return ''
 
 
