@@ -156,6 +156,7 @@ def get_charset(col):
 def get_collate(col):
     if col.get('collate'):
         return ' COLLATE {}'.format(col['collate'])
+    return ''
 
 
 def index_type(col):
