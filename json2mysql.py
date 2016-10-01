@@ -50,9 +50,9 @@ def create_definitions(table):
         fk = table['foreign key']
         state= ' FOREIGN KEY'
         if fk.get('columns'):
-            state += '(' + ', '.join(fk['columns']) + ')'
-        if fk.get('key'):
-            state += '(' + fk['key'] +')'
+            state += ' (' + ', '.join(fk['columns']) + ')'
+        elif fk.get('key'):
+            state += ' (' + fk['key'] +')'
         state += reference_definition(fk)
         defs.append(state)
     definition = ', '.join(defs)
