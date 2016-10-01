@@ -1,0 +1,54 @@
+{
+    "tables": [
+        {
+            "name": "user_table",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "int",
+                    "primary key": true,
+                    "auto_increment": true
+                },{
+                    "name": "username",
+                    "type": "varchar",
+                    "length": 64,
+                    "not null": true
+                },{
+                    "name": "password",
+                    "type": "varchar",
+                    "length": 512,
+                    "not null": true
+                }
+            ],
+            "engine": "InnDB",
+            "charset": "utf8"
+        },{
+            "name": "email_table",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "int",
+                    "not null": true
+                },{
+                    "name": "email",
+                    "type": "vachar",
+                    "length": 256,
+                    "not null": true
+                }
+            ],
+            "foreign key": {
+                "key": "id",
+                "reference": {
+                    "table": "user_table",
+                    "cols": [
+                        "id"
+                    ],
+                    "on update": "cascade",
+                    "on delete": "cascade"
+                }
+            },
+            "engine": "InnDB",
+            "charset": "utf8"
+        }
+    ]
+}
