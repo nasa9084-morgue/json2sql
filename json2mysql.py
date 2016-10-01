@@ -62,13 +62,6 @@ def create_definition(col):
         col_name=col['name'],
         col_def=column_definition(col)
     )
-    if col.get('primary key'):
-        definition += ' PRIMARY KEY'
-    elif col.get('unique'):
-        definition += ' UNIQUE'
-    elif col.get('foreign key'):
-        definition += ' FOREIGN KEY ({})'.format(', '.join(col['foreign key']))
-        definition += reference_definition(col)
     return definition
 
 
