@@ -2,6 +2,7 @@
 # -*- coding:utf-8 -*-
 
 '''json2mysql
+convert json table schema to mysql query
 '''
 
 import json
