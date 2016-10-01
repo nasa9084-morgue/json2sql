@@ -27,8 +27,8 @@ def load_schema(filename):
 
 
 def build_create_table(table):
-    return 'CREATE TABLE {exists} {tbl_name} ({defs}) {table_opts};'.format(
-        exists=('IF NOT EXISTS' if table.get('exists')==False else ''),
+    return 'CREATE TABLE{exists} {tbl_name} ({defs}) {table_opts};'.format(
+        exists=(' IF NOT EXISTS' if table.get('exists')==False else ''),
         tbl_name=table['name'],
         defs=create_definitions(table),
         table_opts=table_opts(table)
