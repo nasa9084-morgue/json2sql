@@ -31,7 +31,7 @@
                     "not null": true
                 },{
                     "name": "email",
-                    "type": "vachar",
+                    "type": "varchar",
                     "length": 256,
                     "not null": true
                 }
