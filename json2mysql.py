@@ -109,7 +109,7 @@ def reference_definition(col):
     if col.get('reference'):
         definition = ' REFERENCES'
         ref = col['reference']
-        definition += ref['table'] + '(' + ', '.join(ref['cols']) + ')'
+        definition += ref['table'] + '(' + ', '.join(ref['columns']) + ')'
 
         if ref.get('match'):
             definition += ' MATCH {}'.format(ref['match'])
