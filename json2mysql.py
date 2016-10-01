@@ -102,7 +102,7 @@ def column_definition(col):
 def reference_definition(col):
     definition = ''
     if col.get('reference'):
-        definition = ' REFERENCES'
+        definition = ' REFERENCES '
         ref = col['reference']
         definition += ref['table'] + '(' + ', '.join(ref['columns']) + ')'
 
