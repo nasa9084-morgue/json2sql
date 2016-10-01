@@ -185,6 +185,7 @@ def table_opts(table):
         opts.append('MAX_ROWS {}'.format(table['max_rows']))
     if table.get('min_rows'):
         opts.append('MIN_ROWS {}'.format(table['min_rows']))
+    return ', '.join(opts)
 
 if __name__ == '__main__':
     main()
