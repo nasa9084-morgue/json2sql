@@ -39,21 +39,23 @@ def create_definitions(table):
     defs = []
     for col in table['columns']:
         defs.append(create_definition(col))
-    definition = ', '.join(defs)
     for keyname in ['primary key', 'index', 'key', 'unique']:
         if table.get(keyname):
             key = table[keyname]
-            definition += ' ' + keyname.upper()
-            definition += index_type(key)
-            definition += '(' + ', '.join(key['columns']) + ')'
+            state = ' ' + keyname.upper()
+            state += index_type(key)
+            state += '(' + ', '.join(key['columns']) + ')'
+            defs.append(state)
     if table.get('foreign key'):
         fk = table['foreign key']
-        definition += ' FOREIGN KEY'
+        state= ' FOREIGN KEY'
         if fk.get('columns'):
-            definition += '(' + ', '.join(fk['columns']) + ')'
+            state += '(' + ', '.join(fk['columns']) + ')'
         if fk.get('key'):
-            definition += '(' + fk['key'] +')'
-        definition += reference_definition(fk)
+            state += '(' + fk['key'] +')'
+        state += reference_definition(fk)
+        defs.append(state)
+    definition = ', '.join(defs)
     return definition
 
 
