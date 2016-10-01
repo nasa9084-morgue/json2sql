@@ -14,7 +14,10 @@ def main():
         print('{} filename'.format(args[0]))
         quit()
     schema = load_schema(args[1])
-    print(schema)
+    tables = []
+    for table in schema['tables']:
+        tables.append(build_create_table(table))
+    print(tables)
 
 
 def load_schema(filename):
@@ -22,7 +25,7 @@ def load_schema(filename):
         schema = json.load(f)
     return schema
 
-
+\
 def build_create_table(table):
     return 'CREATE TABLE {exists} {tbl_name} ({defs}) {table_opts};'.format(
         exists=('IF NOT EXISTS' if not table.get('exists') else ''),
