@@ -40,7 +40,7 @@
                 "key": "id",
                 "reference": {
                     "table": "user_table",
-                    "cols": [
+                    "columns": [
                         "id"
                     ],
                     "on update": "cascade",
