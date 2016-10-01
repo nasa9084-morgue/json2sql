@@ -41,7 +41,7 @@ def create_definitions(table):
         defs.append(create_definition(col))
     definition = ', '.join(defs)
     for keyname in ['primary key', 'index', 'key', 'unique']:
-        if table.get(key):
+        if table.get(keyname):
             key = table[keyname]
             definition += ' ' + keyname.upper()
             definition += index_type(key)
