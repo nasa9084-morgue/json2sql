@@ -20,7 +20,7 @@
                     "not null": true
                 }
             ],
-            "engine": "InnDB",
+            "engine": "InnoDB",
             "charset": "utf8"
         },{
             "name": "email_table",
@@ -47,7 +47,7 @@
                     "on delete": "cascade"
                 }
             },
-            "engine": "InnDB",
+            "engine": "InnoDB",
             "charset": "utf8"
         }
     ]
